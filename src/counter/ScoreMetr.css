@@ -29,7 +29,10 @@
 }
 
 .errorMessage {
-    color: red;
+    color: black;
+    background: red;
+    border-radius: 7px;
+    height: 52px;
 }
 
 .table {
@@ -43,7 +46,6 @@
     font-weight: 700;
     margin-bottom: 10px;
     line-height: 1;
-
     text-transform: uppercase;
     letter-spacing:0.3em;
     font-size: 22px;

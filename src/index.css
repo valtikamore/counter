@@ -1,53 +1,53 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  max-width: 900px;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  background: #17181c;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    max-width: 900px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: url(img/Tesla-2020-Ethan-Hawke-movie.jpg) no-repeat;
 }
 
 button {
-  background: none;
-  border: 2px solid #ef6eae;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
+    background: none;
+    border: 2px solid #ef6eae;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
 }
 
 button {
-  color: white;
+    color: white;
 }
 
 button:hover,
 button:focus {
-  border-color: #ef8f6e;;
-  color: #fff;
+    border-color: #ef8f6e;;
+    color: #fff;
 }
 
 button:active {
-  outline: none;
+    outline: none;
 }
 
 input {
-  background: #17181c;
-  border: 1px solid #ef6eae;
-  color: white;
-  border-radius: 10px;
-  padding: 4px;
-  margin-bottom: 10px;
+    background: #17181c;
+    border: 1px solid #ef6eae;
+    color: white;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 10px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }

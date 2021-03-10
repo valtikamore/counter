@@ -18,7 +18,7 @@
     flex-direction: column;
 }
 .error{
-   background: rgba(248, 3, 3,.9);
+   background: rgba(248, 3, 3, 0.5);
 }
 input:focus {
     outline: none;
