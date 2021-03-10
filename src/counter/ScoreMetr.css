@@ -1,0 +1,50 @@
+.counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid  #ef6eae;
+    border-radius: 7px;
+    padding: 25px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.button-block {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.pulse:hover,
+.pulse:focus {
+    animation: pulse 1s;
+    box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+    color: #ef866e;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #ef8f6e;
+    }
+}
+
+.errorMessage {
+    color: red;
+}
+
+.table {
+    border: 1px solid #ef6eae;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 33px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1;
+
+    text-transform: uppercase;
+    letter-spacing:0.3em;
+    font-size: 22px;
+}

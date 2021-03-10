@@ -1,0 +1,25 @@
+
+.counterSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid  #ef6eae;
+    border-radius: 7px;
+    padding: 25px;
+    margin-right: 10px;
+    height: 100%;
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+}
+.values {
+    display: flex;
+    flex-direction: column;
+}
+.error{
+   background: rgba(248, 3, 3,.9);
+}
+input:focus {
+    outline: none;
+}
