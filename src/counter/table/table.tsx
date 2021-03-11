@@ -1,31 +1,31 @@
-import React, {FC, useState} from "react";
-
+import React, {FC} from "react";
+import classNames from  'classnames'
 
 type TablePropsType = {
     counter: number
     maxValue: number
     startValue: number
     startText: boolean
-    setStartText: (value: boolean) => void
+
 }
 
-export const Table: FC<TablePropsType> = ({counter, maxValue, startValue,...props}) => {
+export const Table: FC<TablePropsType> = ({counter, maxValue, startValue,startText,}) => {
 
     const tableClassName = startValue < 0 || startValue === maxValue ||
-    counter === maxValue || startValue > maxValue
-        ? 'errorMessage'
-        : ''
+      startValue > maxValue
+    const counterMax = counter === maxValue ? 'maxCounter' : ''
 
     return (
 
-        <div className={tableClassName}>
+        <div className={counterMax}>
             {
-                props.startText
+                startText
                     ? <div  className='table'>set value</div>
                     :
-                startValue < 0 || startValue === maxValue || startValue > maxValue
-
-                ? <div className='table'>Error</div>
+                    tableClassName
+                ? <div className={classNames('table' , {
+                    'errorTable' : tableClassName
+                        })}>Error</div>
                     : <div className='table'> {counter}</div>
             }
         </div>

@@ -1,3 +1,11 @@
 .counter-wrapper {
     display: flex;
 }
+@media screen and (max-width: 768px) {
+    .counter-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+}

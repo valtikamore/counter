@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, MouseEventHandler, useState} from "react";
+import React, {ChangeEvent, FC} from "react";
 import './ScoreMetrSettings.css'
 import {Button} from "../counter/button/button";
 
@@ -11,6 +11,7 @@ type ScoreMetrSettingsType = {
     setStartValue:(n:number)=>void
     setCounter:(n:number)=>void
     setStartText: (value: boolean) => void
+    setDisableIncState:(value:boolean) => void
 }
 
 export const ScoreMetrSettings:FC<ScoreMetrSettingsType> = ({maxValue,startValue,setMaxValue,setStartValue,setCounter, ...props}) => {
@@ -22,8 +23,9 @@ export const ScoreMetrSettings:FC<ScoreMetrSettingsType> = ({maxValue,startValue
         setStartValue(parseInt(e.currentTarget.value))
     }
 
-    const setTask = (e:any) => {
+    const setTask = () => {
         props.setStartText(false)
+        props.setDisableIncState(false)
         setCounter(startValue)
         localStorage.setItem('startValue',JSON.stringify(startValue))
         localStorage.setItem('maxValue',JSON.stringify(maxValue))
@@ -35,13 +37,13 @@ export const ScoreMetrSettings:FC<ScoreMetrSettingsType> = ({maxValue,startValue
     return (
         <div className={'counterSettings'} >
                <div className='values'>
-                   <div>max value:</div>
+                   <div>max value :</div>
                    <input
                        type="number"
                        className={classNameCounterMax}
                        value={maxValue}
                        onChange={onChangeMax} />
-                    <div>start value</div>
+                    <div>start value :</div>
                     <input
                         type="number"
                         value={startValue}
@@ -49,7 +51,7 @@ export const ScoreMetrSettings:FC<ScoreMetrSettingsType> = ({maxValue,startValue
                         className={classNameStart}/>
                </div>
                 <div>
-                    <Button title='set' disabled={disableSet} onClick={setTask }className='pulse' />
+                    <Button title='set' disabled={disableSet} onClick={setTask } />
                 </div>
         </div>
     )

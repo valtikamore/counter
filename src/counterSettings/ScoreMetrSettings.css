@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid  #ef6eae;
+    border: 2px solid  #ef6eae;
     border-radius: 7px;
     padding: 25px;
     margin-right: 10px;
@@ -22,4 +22,10 @@
 }
 input:focus {
     outline: none;
+}
+
+@media screen and (max-width: 768px) {
+    .counterSettings {
+        padding: 25px 5px 25px 5px ;
+    }
 }

@@ -1,9 +1,8 @@
-import React, {FC, useState} from "react";
+import React, {FC} from "react";
 import './ScoreMetr.css'
 import {Button} from "./button/button";
 import {Table} from "./table/table";
-import {start} from "repl";
-import {ScoreMetrSettings} from "../counterSettings/ScoreMetrSettings";
+
 
 
 type ScoreMetrType = {
@@ -14,6 +13,7 @@ type ScoreMetrType = {
     startValue:number
     startText: boolean
     setStartText: (value: boolean) => void
+    disableIncState:boolean
 }
 
 export const ScoreMetr:FC<ScoreMetrType> = ({counter,incCounter,resetCounter,maxValue,startValue, ...props }) => {
@@ -24,11 +24,10 @@ export const ScoreMetr:FC<ScoreMetrType> = ({counter,incCounter,resetCounter,max
     return (
         <div className={'counter'} >
                 <Table counter={counter} maxValue={maxValue} startValue={startValue}
-                       startText={props.startText}
-                       setStartText={props.setStartText}/>
+                       startText={props.startText}/>
                    <div className='button-block'>
-                       <Button title='inc' onClick={()=>incCounter() } disabled={disableInc} className='pulse'/>
-                       <Button onClick={()=>resetCounter()}  title='reset' disabled={disableReset} className='pulse'/>
+                       <Button title='inc' onClick={()=>incCounter() } disabled={props.disableIncState || disableInc } />
+                       <Button onClick={()=>resetCounter()}  title='reset' disabled={disableReset} />
                    </div>
         </div>
     )

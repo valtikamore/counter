@@ -8,9 +8,8 @@ const App: FC = () => {
     const [counter, setCounter] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(5)
     const [startValue, setStartValue] = useState<number>(0)
-
-
     const [startText, setStartText] = useState<boolean>(true)
+    const [disableIncState,setDisableIncState] = useState<boolean>(true)
 
         useEffect(()=> {
             let start = localStorage.getItem('startValue')
@@ -41,6 +40,7 @@ const App: FC = () => {
                 startValue={startValue}
                 startText={startText}
                 setStartText={setStartText}
+                disableIncState={disableIncState}
                />
             <ScoreMetrSettings maxValue={maxValue}
                                startValue={startValue}
@@ -48,6 +48,7 @@ const App: FC = () => {
                                setStartValue={setStartValue}
                                setCounter={setCounter}
                                setStartText={setStartText}
+                               setDisableIncState={setDisableIncState}
                                />
         </div>
     );
