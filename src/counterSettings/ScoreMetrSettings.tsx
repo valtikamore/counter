@@ -1,6 +1,7 @@
 import React, {ChangeEvent, FC} from "react";
 import './ScoreMetrSettings.css'
 import {Button} from "../counter/button/button";
+import {Input} from "../counter/input/input";
 
 
 
@@ -37,18 +38,33 @@ export const ScoreMetrSettings:FC<ScoreMetrSettingsType> = ({maxValue,startValue
     return (
         <div className={'counterSettings'} >
                <div className='values'>
-                   <div>max value :</div>
-                   <input
-                       type="number"
+                   <Input
                        className={classNameCounterMax}
+                       onChange={onChangeMax}
                        value={maxValue}
-                       onChange={onChangeMax} />
-                    <div>start value :</div>
-                    <input
-                        type="number"
-                        value={startValue}
-                        onChange={onChangeStart}
-                        className={classNameStart}/>
+                   >
+                       Max value:
+                   </Input>
+                   <Input
+                       className={classNameStart}
+                       onChange={onChangeStart}
+                       value={startValue}
+                   >
+                       Start value :
+                   </Input>
+
+                   {/*<div>max value :</div>*/}
+                   {/*<input*/}
+                   {/*    type="number"*/}
+                   {/*    className={classNameCounterMax}*/}
+                   {/*    value={maxValue}*/}
+                   {/*    onChange={onChangeMax} />*/}
+                   {/* <div>start value :</div>*/}
+                   {/* <input*/}
+                   {/*     type="number"*/}
+                   {/*     value={startValue}*/}
+                   {/*     onChange={onChangeStart}*/}
+                   {/*     className={classNameStart}/>*/}
                </div>
                 <div>
                     <Button title='set' disabled={disableSet} onClick={setTask } />
