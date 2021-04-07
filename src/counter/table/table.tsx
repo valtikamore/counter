@@ -6,7 +6,6 @@ type TablePropsType = {
     maxValue: number
     startValue: number
     startText: boolean
-
 }
 
 export const Table: FC<TablePropsType> = ({counter, maxValue, startValue,startText,}) => {

@@ -10,7 +10,6 @@ const App: FC = () => {
     const [startValue, setStartValue] = useState<number>(0)
     const [startText, setStartText] = useState<boolean>(true)
     const [disableIncState,setDisableIncState] = useState<boolean>(true)
-
         useEffect(()=> {
             let start = localStorage.getItem('startValue')
             let max = localStorage.getItem('maxValue')
@@ -19,8 +18,6 @@ const App: FC = () => {
                 setStartValue(+start)
             }
         },[])
-
-
     function incCounter() {
         if (counter < maxValue) {
             setCounter(counter + 1)

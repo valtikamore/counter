@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import './ScoreMetr.css'
-import {Button} from "./button/button";
+import {Button} from "../components/button/button";
 import {Table} from "./table/table";
 
 

@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FC} from "react";
 import './ScoreMetrSettings.css'
-import {Button} from "../counter/button/button";
-import {Input} from "../counter/input/input";
+import {Button} from "../components/button/button";
+import {Input} from "../components/input/input";
 
 
 
@@ -41,30 +41,15 @@ export const ScoreMetrSettings:FC<ScoreMetrSettingsType> = ({maxValue,startValue
                    <Input
                        className={classNameCounterMax}
                        onChange={onChangeMax}
-                       value={maxValue}
-                   >
+                       value={maxValue}>
                        Max value:
                    </Input>
                    <Input
                        className={classNameStart}
                        onChange={onChangeStart}
-                       value={startValue}
-                   >
+                       value={startValue}>
                        Start value :
                    </Input>
-
-                   {/*<div>max value :</div>*/}
-                   {/*<input*/}
-                   {/*    type="number"*/}
-                   {/*    className={classNameCounterMax}*/}
-                   {/*    value={maxValue}*/}
-                   {/*    onChange={onChangeMax} />*/}
-                   {/* <div>start value :</div>*/}
-                   {/* <input*/}
-                   {/*     type="number"*/}
-                   {/*     value={startValue}*/}
-                   {/*     onChange={onChangeStart}*/}
-                   {/*     className={classNameStart}/>*/}
                </div>
                 <div>
                     <Button title='set' disabled={disableSet} onClick={setTask } />
