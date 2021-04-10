@@ -1,34 +1,46 @@
-
 type incrementCounterActionType = {
-    type:'INCREMENT_COUNTER'
+    type: 'INCREMENT_COUNTER'
 }
-type decrementCounterActionType = {
-    type:'DECREMENT_COUNTER'
+type resetCounterActionType = {
+    type: 'RESET_COUNTER'
 }
-enum ACTION_TYPES {
-    INCREMENT_COUNTER='INCREMENT_COUNTER',
-    DECREMENT_COUNTER= 'DECREMENT_COUNTER'
-}
-export type ActionsType =incrementCounterActionType | decrementCounterActionType
 
-let initialState:number = 0
-export const counterReducer = (state=initialState,action:ActionsType) => {
+enum ACTION_TYPES {
+    INCREMENT_COUNTER = 'INCREMENT_COUNTER',
+    RESET_COUNTER = 'RESET_COUNTER'
+}
+
+export type ActionsType = incrementCounterActionType | resetCounterActionType
+
+interface initialState {
+    count: number
+    maxValue: number
+}
+
+let initialState = {
+    count: 0,
+    maxValue: 5
+} as initialState
+export const counterReducer = (state = initialState, action: ActionsType) => {
+    debugger
     switch (action.type) {
-        case ACTION_TYPES.INCREMENT_COUNTER:{
-            return state + 1
+        case ACTION_TYPES.INCREMENT_COUNTER: {
+
+            return state.count + 1
+
+
         }
-        case ACTION_TYPES.DECREMENT_COUNTER:{
-            return state - 1
+        case ACTION_TYPES.RESET_COUNTER: {
+            return state.count = state.maxValue
         }
-        default : return state
+        default :
+            return state
     }
 }
-export const incrementCounterAC = ():incrementCounterActionType => {
-    return {type:'INCREMENT_COUNTER'}
+export const incrementCounterAC = (): incrementCounterActionType => {
+    return {type: 'INCREMENT_COUNTER'}
 }
-export const decrementCounterAC = ():decrementCounterActionType => {
-    return {type:'DECREMENT_COUNTER'}
+export const resetCounterAC = (): resetCounterActionType => {
+    return {type: 'RESET_COUNTER'}
 }
-export const setCountAC = (startValue:number,maxValue:number):decrementCounterActionType => {
-    return {type:'DECREMENT_COUNTER'}
-}
+
