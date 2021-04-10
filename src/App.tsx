@@ -13,6 +13,7 @@ const App: FC = () => {
     const [counter, setCounter] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(5)
     const [startValue, setStartValue] = useState<number>(0)
+
     const [startText, setStartText] = useState<boolean>(true)
     const [disableIncState,setDisableIncState] = useState<boolean>(true)
 

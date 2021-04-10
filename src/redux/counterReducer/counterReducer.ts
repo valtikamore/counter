@@ -1,5 +1,6 @@
 type incrementCounterActionType = {
-    type: 'INCREMENT_COUNTER'
+    type: 'INCREMENT_COUNTER',
+    error:'error.set correct value'
 }
 type resetCounterActionType = {
     type: 'RESET_COUNTER'
@@ -15,30 +16,34 @@ export type ActionsType = incrementCounterActionType | resetCounterActionType
 interface initialState {
     count: number
     maxValue: number
+    startValue:number
+    errors:'error.set correct value'
 }
 
 let initialState = {
     count: 0,
-    maxValue: 5
+    maxValue: 5,
+    startValue:0,
+    errors:'error.set correct value'
 } as initialState
 export const counterReducer = (state = initialState, action: ActionsType) => {
     debugger
     switch (action.type) {
         case ACTION_TYPES.INCREMENT_COUNTER: {
-
-            return state.count + 1
-
-
+            if(state.count < state.maxValue) {
+                return {...state,count : state.count + 1 }
+            }
+             return state
         }
         case ACTION_TYPES.RESET_COUNTER: {
-            return state.count = state.maxValue
+            return {...state,count: state.count = state.startValue}
         }
         default :
             return state
     }
 }
 export const incrementCounterAC = (): incrementCounterActionType => {
-    return {type: 'INCREMENT_COUNTER'}
+    return {type: 'INCREMENT_COUNTER',error:'error.set correct value'}
 }
 export const resetCounterAC = (): resetCounterActionType => {
     return {type: 'RESET_COUNTER'}
