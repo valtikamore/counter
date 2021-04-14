@@ -1,19 +1,14 @@
-type incrementCounterActionType = {
-    type: 'INCREMENT_COUNTER',
-    error:'error.set correct value'
-}
-type resetCounterActionType = {
-    type: 'RESET_COUNTER'
-}
+
 
 enum ACTION_TYPES {
     INCREMENT_COUNTER = 'INCREMENT_COUNTER',
     RESET_COUNTER = 'RESET_COUNTER'
 }
 
-export type ActionsType = incrementCounterActionType | resetCounterActionType
+export type ActionsType = ReturnType<typeof incrementCounterAC> |
+    ReturnType<typeof resetCounterAC>
 
-interface initialState {
+ export interface initialState {
     count: number
     maxValue: number
     startValue:number
@@ -42,10 +37,10 @@ export const counterReducer = (state = initialState, action: ActionsType) => {
             return state
     }
 }
-export const incrementCounterAC = (): incrementCounterActionType => {
+export const incrementCounterAC = () => {
     return {type: 'INCREMENT_COUNTER',error:'error.set correct value'}
 }
-export const resetCounterAC = (): resetCounterActionType => {
+export const resetCounterAC = () => {
     return {type: 'RESET_COUNTER'}
 }
 

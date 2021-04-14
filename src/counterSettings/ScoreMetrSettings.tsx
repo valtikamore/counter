@@ -2,20 +2,20 @@ import React, {ChangeEvent, FC} from "react";
 import './ScoreMetrSettings.css'
 import {Button} from "../components/button/button";
 import {Input} from "../components/input/input";
+import {useDispatch} from "react-redux";
 
 
 
 type ScoreMetrSettingsType = {
     maxValue:number
     startValue:number
-    setMaxValue:(n:number)=>void
-    setStartValue:(n:number)=>void
-    setCounter:(n:number)=>void
     setStartText: (value: boolean) => void
     setDisableIncState:(value:boolean) => void
 }
 
-export const ScoreMetrSettings:FC<ScoreMetrSettingsType> = ({maxValue,startValue,setMaxValue,setStartValue,setCounter, ...props}) => {
+export const ScoreMetrSettings:FC<ScoreMetrSettingsType> = ({maxValue,startValue, ...props}) => {
+    const dispatch = useDispatch()
+
 
     const onChangeMax = (e:ChangeEvent<HTMLInputElement>) => {
         setMaxValue(parseInt(e.currentTarget.value))

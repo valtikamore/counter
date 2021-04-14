@@ -3,16 +3,17 @@ import {ScoreMetr} from './counter/ScoreMetr';
 import './App.css'
 import {ScoreMetrSettings} from "./counterSettings/ScoreMetrSettings";
 import {useDispatch, useSelector} from "react-redux";
-import {incrementCounterAC, resetCounterAC} from "./redux/counterReducer/counterReducer";
+import {incrementCounterAC, initialState, resetCounterAC} from "./redux/counterReducer/counterReducer";
 import {AppRootStateType} from "./redux/store";
 
+interface counterType extends initialState  {
+
+}
 
 const App: FC = () => {
     const dispatch = useDispatch()
+    const counter = useSelector<AppRootStateType,counterType>(state => state.counter)
 
-    const [counter, setCounter] = useState<number>(0)
-    const [maxValue, setMaxValue] = useState<number>(5)
-    const [startValue, setStartValue] = useState<number>(0)
 
     const [startText, setStartText] = useState<boolean>(true)
     const [disableIncState,setDisableIncState] = useState<boolean>(true)
@@ -20,41 +21,37 @@ const App: FC = () => {
         useEffect(()=> {
             let start = localStorage.getItem('startValue')
             let max = localStorage.getItem('maxValue')
-            if(start && max) {
-                setMaxValue(+max)
-                setStartValue(+start)
-            }
+            // if(start && max) {
+            //     setMaxValue(+max)
+            //     setStartValue(+start)
+            // }
         },[])
     function incCounter() {
         let action = incrementCounterAC()
         dispatch(action)
-        // if (counter < maxValue) {
-        //     setCounter(counter + 1)
-        // }
     }
     function resetCounter() {
         let action = resetCounterAC()
         dispatch(action)
-        // setCounter(startValue)
     }
 
     return (
         <div className='counter-wrapper'>
             <ScoreMetr
-                maxValue={maxValue}
+                maxValue={counter.maxValue}
                 resetCounter={resetCounter}
-                counter={counter}
+                counter={counter.count}
                 incCounter={incCounter}
-                startValue={startValue}
+                startValue={counter.startValue}
                 startText={startText}
                 setStartText={setStartText}
                 disableIncState={disableIncState}
                />
-            <ScoreMetrSettings maxValue={maxValue}
-                               startValue={startValue}
-                               setMaxValue={setMaxValue}
-                               setStartValue={setStartValue}
-                               setCounter={setCounter}
+            <ScoreMetrSettings maxValue={counter.maxValue}
+                               startValue={counter.startValue}
+                               // setMaxValue={setMaxValue}
+                               // setStartValue={setStartValue}
+                               // setCounter={setCounter}
                                setStartText={setStartText}
                                setDisableIncState={setDisableIncState}
                                />
