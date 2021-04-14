@@ -1,23 +1,19 @@
 import React, {ButtonHTMLAttributes, DetailedHTMLProps, FC} from "react";
-import classNames from  'classnames'
+import classNames from 'classnames'
 
 
 type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
-type ButtonsType = DefaultButtonPropsType  & {
-    incCounter?:() => void
-    resetCounter?:() => void
-    title:string
-    disabled:boolean
+type ButtonsType = DefaultButtonPropsType & {
+    onButtonClick?: () => void
 }
 
- export const Button:FC<ButtonsType> = ({incCounter , resetCounter,title,disabled, ...restProps}) => {
+export const Button: FC<ButtonsType> = props => {
+    const {onButtonClick} = props
     return (
-            <button {...restProps} className={classNames('pulse', {
-                'disable' : disabled
-            })} disabled={disabled}>
-                {title}
-            </button>
+        <button onClick={onButtonClick}>
+            {props.children}
+        </button>
     )
 }
 

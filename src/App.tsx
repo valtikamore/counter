@@ -1,59 +1,47 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {ChangeEvent, FC, useEffect, useReducer, useState} from 'react';
 import {ScoreMetr} from './counter/ScoreMetr';
 import './App.css'
 import {ScoreMetrSettings} from "./counterSettings/ScoreMetrSettings";
-import {useDispatch, useSelector} from "react-redux";
-import {incrementCounterAC, initialState, resetCounterAC} from "./redux/counterReducer/counterReducer";
-import {AppRootStateType} from "./redux/store";
+import {counterReducer, incrementCounterAC, initialState, resetCounterAC, setCounterAC} from "./redux/counterReducer/counterReducer";
 
-interface counterType extends initialState  {
 
-}
 
 const App: FC = () => {
-    const dispatch = useDispatch()
-    const counter = useSelector<AppRootStateType,counterType>(state => state.counter)
 
-
-    const [startText, setStartText] = useState<boolean>(true)
-    const [disableIncState,setDisableIncState] = useState<boolean>(true)
+    const [counter,dispatchToCounter] = useReducer(counterReducer,{
+        count:0,
+        maxValue:5,
+        minValue:0,
+        error:'error.set correct value',
+        startText:true,
+        disableButton:true
+    })
 
         useEffect(()=> {
             let start = localStorage.getItem('startValue')
             let max = localStorage.getItem('maxValue')
-            // if(start && max) {
-            //     setMaxValue(+max)
-            //     setStartValue(+start)
-            // }
         },[])
+
     function incCounter() {
-        let action = incrementCounterAC()
-        dispatch(action)
+        dispatchToCounter(incrementCounterAC())
     }
     function resetCounter() {
-        let action = resetCounterAC()
-        dispatch(action)
+        dispatchToCounter(resetCounterAC())
     }
+    function setCounter() {
+        dispatchToCounter(setCounterAC(counter.maxValue,counter.minValue))
+    }
+
 
     return (
         <div className='counter-wrapper'>
             <ScoreMetr
-                maxValue={counter.maxValue}
-                resetCounter={resetCounter}
-                counter={counter.count}
+                counter={counter}
                 incCounter={incCounter}
-                startValue={counter.startValue}
-                startText={startText}
-                setStartText={setStartText}
-                disableIncState={disableIncState}
+                resetCounter={resetCounter}
                />
-            <ScoreMetrSettings maxValue={counter.maxValue}
-                               startValue={counter.startValue}
-                               // setMaxValue={setMaxValue}
-                               // setStartValue={setStartValue}
-                               // setCounter={setCounter}
-                               setStartText={setStartText}
-                               setDisableIncState={setDisableIncState}
+            <ScoreMetrSettings
+                setCounter={setCounter}
                                />
         </div>
     );

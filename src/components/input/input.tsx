@@ -3,25 +3,19 @@ import * as React from 'react';
 import {ChangeEvent, FC} from "react";
 
 type InputPropsType = {
-    className:any
-    value:number
-    onChange:(e:ChangeEvent<HTMLInputElement>) => void
+    onChangeMax:()=>void
+    onChangeMin:()=>void
 };
-export const Input:FC<InputPropsType> =
-    ({
-         className,
-         value,
-         onChange,
-         children
-    }) => {
+export const Input:FC<InputPropsType> = props => {
+    const {} = props
     return (
         <div>
-            <div>{children}</div>
+            <div>{props.children}</div>
             <input
                 type="number"
-                className={className}
+                /*className={className}
                 value={value}
-                onChange={onChange} />
+                onChange={onChange}*/ />
         </div>
     );
 };
