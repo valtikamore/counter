@@ -6,12 +6,13 @@ type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonE
 
 type ButtonsType = DefaultButtonPropsType & {
     onClick: () => void
+    disable?:boolean
 }
 
 export const Button: FC<ButtonsType> = props => {
-    const {onClick} = props
+    const {onClick,disable} = props
     return (
-        <button onClick={()=> onClick()}>
+        <button onClick={()=> onClick()} disabled={disable} >
             {props.children}
         </button>
     )

@@ -28,26 +28,27 @@ export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
     const setCounter = () => {
         dispatch(setCounterAC(minValue))
     }
+    const classNameStart = minValue < 0 || minValue === maxValue || maxValue < minValue ? 'error' : ''
+    const disableSet = minValue < 0 || maxValue === minValue || minValue > maxValue
     return (
         <div className={'counterSettings'}>
-            <div className='values'>
-                <Input value={maxValue} onChange={onChangeMax}>
+            <div>
+                <Input value={maxValue} onChange={onChangeMax} classname={classNameStart}>
                     Max value:
                 </Input>
-                <Input value={minValue} onChange={onChangeStart}>
+                <Input value={minValue} onChange={onChangeStart} classname={classNameStart}>
                     Start value :
                 </Input>
             </div>
             <div>
-                <Button onClick={setCounter}>
+                <Button onClick={setCounter} disable={disableSet} >
                     set
                 </Button>
             </div>
         </div>
     )
-    /* const classNameStart = startValue<0 || startValue === maxValue || maxValue < startValue ? 'error':''
-     const classNameCounterMax =  startValue === maxValue || maxValue < startValue ? 'error':''
 
-     const disableSet = startValue < 0 || maxValue === startValue || startValue > maxValue*/
+
 
 }
+
