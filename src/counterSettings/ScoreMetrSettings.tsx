@@ -2,51 +2,52 @@ import React, {ChangeEvent, FC} from "react";
 import './ScoreMetrSettings.css'
 import {Button} from "../components/button/button";
 import {Input} from "../components/input/input";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../redux/store";
+import {setCounterAC, setMaxValueAC, setMinValueAC} from "../redux/counterReducer/counterReducer";
 
 
+type ScoreMetrSettingsType = {}
 
-type ScoreMetrSettingsType = {
-    setCounter:()=>void
-}
-
-export const ScoreMetrSettings:FC<ScoreMetrSettingsType> = props=> {
-
-    const {setCounter} = props
+export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
+    const dispatch = useDispatch()
+    const maxValue = useSelector<AppRootStateType, number>(state => state.counter.maxValue)
+    const minValue = useSelector<AppRootStateType, number>(state => state.counter.minValue)
+    const {} = props
 
 
-    const onChangeMax = (e:ChangeEvent<HTMLInputElement>) => {
-      /*  setMaxValue(parseInt(e.currentTarget.value))*/
+    const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
+        let num = parseInt(e.currentTarget.value)
+        dispatch(setMaxValueAC(num))
     }
-    const onChangeStart = (e:ChangeEvent<HTMLInputElement>) => {
-       /* setStartValue(parseInt(e.currentTarget.value))*/
+    const onChangeStart = (e: ChangeEvent<HTMLInputElement>) => {
+        let num = parseInt(e.currentTarget.value)
+        dispatch(setMinValueAC(num))
     }
 
-    const setTask = () => {
-       /* props.setStartText(false)
-        props.setDisableIncState(false)
-        setCounter(startValue)
-        */
+    const setCounter = () => {
+        dispatch(setCounterAC(minValue))
     }
-   /* const classNameStart = startValue<0 || startValue === maxValue || maxValue < startValue ? 'error':''
-    const classNameCounterMax =  startValue === maxValue || maxValue < startValue ? 'error':''
-
-    const disableSet = startValue < 0 || maxValue === startValue || startValue > maxValue*/
     return (
-        <div className={'counterSettings'} >
-               <div className='values'>
-                   <Input onChangeMax={}>
-                       Max value:
-                   </Input>
-                   <Input>
-                       Start value :
-                   </Input>
-               </div>
-                <div>
-                    <Button onButtonClick={setCounter}>
-                        set
-                    </Button>
-                </div>
+        <div className={'counterSettings'}>
+            <div className='values'>
+                <Input value={maxValue} onChange={onChangeMax}>
+                    Max value:
+                </Input>
+                <Input value={minValue} onChange={onChangeStart}>
+                    Start value :
+                </Input>
+            </div>
+            <div>
+                <Button onClick={setCounter}>
+                    set
+                </Button>
+            </div>
         </div>
     )
+    /* const classNameStart = startValue<0 || startValue === maxValue || maxValue < startValue ? 'error':''
+     const classNameCounterMax =  startValue === maxValue || maxValue < startValue ? 'error':''
+
+     const disableSet = startValue < 0 || maxValue === startValue || startValue > maxValue*/
+
 }

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import {initialState} from "../../redux/counterReducer/counterReducer";
 
 type TablePropsType = {
-    counter: initialState
+    counter:number
 }
 
 export const Table: FC<TablePropsType> = props => {
@@ -15,7 +15,7 @@ export const Table: FC<TablePropsType> = props => {
     return (
 
         <div>
-            {counter.count}
+            {counter}
         </div>
     )
 }

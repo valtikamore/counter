@@ -1,47 +1,42 @@
-import React, {ChangeEvent, FC, useEffect, useReducer, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {ScoreMetr} from './counter/ScoreMetr';
 import './App.css'
 import {ScoreMetrSettings} from "./counterSettings/ScoreMetrSettings";
-import {counterReducer, incrementCounterAC, initialState, resetCounterAC, setCounterAC} from "./redux/counterReducer/counterReducer";
-
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "./redux/store";
+import {incrementCounterAC, initialState, resetCounterAC} from "./redux/counterReducer/counterReducer";
 
 
 const App: FC = () => {
-
-    const [counter,dispatchToCounter] = useReducer(counterReducer,{
-        count:0,
-        maxValue:5,
-        minValue:0,
-        error:'error.set correct value',
-        startText:true,
-        disableButton:true
-    })
+    const dispatch = useDispatch()
+    const counter = useSelector<AppRootStateType,initialState>(state => state.counter)
 
         useEffect(()=> {
-            let start = localStorage.getItem('startValue')
-            let max = localStorage.getItem('maxValue')
+            // let start = localStorage.getItem('startValue')
+            // let max = localStorage.getItem('maxValue')
+            // if(start && max) {
+            //     setMaxValue(+max)
+            //     setStartValue(+start)
+            // }
         },[])
 
-    function incCounter() {
-        dispatchToCounter(incrementCounterAC())
+    const  incCounter = () => {
+        if(counter.count < counter.maxValue) {
+            dispatch(incrementCounterAC())
+        }
     }
     function resetCounter() {
-        dispatchToCounter(resetCounterAC())
+        dispatch(resetCounterAC())
     }
-    function setCounter() {
-        dispatchToCounter(setCounterAC(counter.maxValue,counter.minValue))
-    }
-
 
     return (
         <div className='counter-wrapper'>
             <ScoreMetr
-                counter={counter}
                 incCounter={incCounter}
                 resetCounter={resetCounter}
+                counter={counter.count}
                />
             <ScoreMetrSettings
-                setCounter={setCounter}
                                />
         </div>
     );

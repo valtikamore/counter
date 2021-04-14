@@ -7,25 +7,25 @@ import {initialState} from "../redux/counterReducer/counterReducer";
 
 
 type ScoreMetrType = {
-    incCounter: () => void
-    resetCounter: () => void
-    counter: initialState
+    resetCounter:()=>void
+    incCounter:()=>void
+    counter:number
 }
 
 export const ScoreMetr: FC<ScoreMetrType> = props => {
-    const {resetCounter, incCounter, counter} = props
+    const {incCounter,resetCounter,counter} = props
 
     // const disableInc =  maxValue === startValue  || maxValue < 0 || counter === maxValue || startValue <0 || startValue > maxValue
     // const disableReset = counter === 0 || maxValue === startValue  || maxValue < 0 || counter === startValue || counter < 0 || startValue > maxValue
 
     return (
         <div className={'counter'}>
-            <Table counter={counter}/>
+            <Table counter={counter} />
             <div className='button-block'>
-                <Button onButtonClick={incCounter}>
+                <Button onClick={incCounter}>
                     inc
                 </Button>
-                <Button onButtonClick={resetCounter}>
+                <Button onClick={resetCounter}>
                     reset
                 </Button>
             </div>

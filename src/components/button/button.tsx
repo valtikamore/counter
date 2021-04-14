@@ -5,13 +5,13 @@ import classNames from 'classnames'
 type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 
 type ButtonsType = DefaultButtonPropsType & {
-    onButtonClick?: () => void
+    onClick: () => void
 }
 
 export const Button: FC<ButtonsType> = props => {
-    const {onButtonClick} = props
+    const {onClick} = props
     return (
-        <button onClick={onButtonClick}>
+        <button onClick={()=> onClick()}>
             {props.children}
         </button>
     )
