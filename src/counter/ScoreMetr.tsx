@@ -20,7 +20,7 @@ export const ScoreMetr: FC<ScoreMetrType> = props => {
 
     return (
         <div className={'counter'}>
-            <Table counter={counter} />
+            <Table  />
             <div className='button-block'>
                 <Button onClick={incCounter}>
                     inc
