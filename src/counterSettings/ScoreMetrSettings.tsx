@@ -17,20 +17,23 @@ export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
 
 
     const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
-        if (minValue < 0 || minValue === maxValue || maxValue < minValue) {
-            setErrorAC('set correct value. Error')
-        }
         let num = parseInt(e.currentTarget.value)
-        dispatch(setMaxValueAC(num))
-
+        if (minValue < 0 || minValue === maxValue || maxValue < minValue) {
+            setErrorAC('set correct value. Error',true)
+        } else {
+            dispatch(setMaxValueAC(num))
+        }
     }
     const onChangeMin = (e: ChangeEvent<HTMLInputElement>) => {
 
         let num = parseInt(e.currentTarget.value)
         if (num < 0 || num === maxValue || maxValue < num) {
-            dispatch(setErrorAC('enter correct value'))
+            dispatch(setErrorAC('enter correct value',true))
+        } else {
+            dispatch(setErrorAC('',false))
+            dispatch(setMinValueAC(num))
         }
-        dispatch(setMinValueAC(num))
+
     }
 
     const setCounter = () => {

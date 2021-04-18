@@ -10,7 +10,6 @@ type TablePropsType = {
 
 export const Table: FC<TablePropsType> = props => {
     const {} = props
-    const dispatch = useDispatch()
     const counter = useSelector<AppRootStateType,initialState>(state => state.counter)
     // const tableClassName = startValue < 0 || startValue === maxValue ||
     //   startValue > maxValue
@@ -21,7 +20,7 @@ export const Table: FC<TablePropsType> = props => {
     return (
 
         <div>
-            {counter.error ? counter.error : counter.count}
+            {counter.error ? counter.errorText : counter.count}
         </div>
     )
 }
