@@ -4,12 +4,12 @@ import './App.css'
 import {ScoreMetrSettings} from "./counterSettings/ScoreMetrSettings";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store";
-import {incrementCounterAC, initialState, resetCounterAC} from "./redux/counterReducer/counterReducer";
+import {incrementCounterAC, initialStateType, resetCounterAC} from "./redux/counterReducer/counterReducer";
 
 
 const App: FC = () => {
     const dispatch = useDispatch()
-    const counter = useSelector<AppRootStateType,initialState>(state => state.counter)
+    const counter = useSelector<AppRootStateType,initialStateType>(state => state.counter)
 
         useEffect(()=> {
             // let start = localStorage.getItem('startValue')

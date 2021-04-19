@@ -15,11 +15,11 @@ export type ActionsType =
     ReturnType<typeof setMinValueAC> |
     ReturnType<typeof setErrorAC>
 
-export interface initialState {
+export interface initialStateType {
     count: number
     maxValue: number
     minValue: number
-    errorText:string
+    errorText:`enter values and press 'set'`|`enter correct value`|``
     error: boolean
     disableButton: boolean
 }
@@ -29,9 +29,9 @@ let initialState = {
     maxValue: 5,
     minValue: 0,
     errorText: `enter values and press 'set'`,
-    error:false,
+    error:true,
     disableButton: true
-} as initialState
+} as initialStateType
 
 export const counterReducer = (state = initialState, action: ActionsType) => {
     switch (action.type) {

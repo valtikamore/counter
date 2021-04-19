@@ -4,62 +4,74 @@ import {Button} from "../components/button/button";
 import {Input} from "../components/input/input";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../redux/store";
-import {setCounterAC, setErrorAC, setMaxValueAC, setMinValueAC} from "../redux/counterReducer/counterReducer";
+import {
+    initialStateType,
+    setCounterAC,
+    setErrorAC,
+    setMaxValueAC,
+    setMinValueAC
+} from "../redux/counterReducer/counterReducer";
 
 
 type ScoreMetrSettingsType = {}
 
 export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
     const dispatch = useDispatch()
-    const maxValue = useSelector<AppRootStateType, number>(state => state.counter.maxValue)
-    const minValue = useSelector<AppRootStateType, number>(state => state.counter.minValue)
+    const counter = useSelector<AppRootStateType, initialStateType>(state => state.counter)
     const {} = props
 
 
     const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
         let num = parseInt(e.currentTarget.value)
-        if (minValue < 0 || minValue === maxValue || maxValue < minValue) {
-            setErrorAC('set correct value. Error',true)
+        if (num < 0) {
+            setErrorAC('enter correct value', true)
+        } else if (counter.minValue === num) {
+            setErrorAC('enter correct value', true)
+        } else if (num < counter.minValue) {
+            setErrorAC('enter correct value', true)
         } else {
+            setErrorAC('', false)
             dispatch(setMaxValueAC(num))
         }
     }
     const onChangeMin = (e: ChangeEvent<HTMLInputElement>) => {
-
         let num = parseInt(e.currentTarget.value)
-        if (num < 0 || num === maxValue || maxValue < num) {
-            dispatch(setErrorAC('enter correct value',true))
+        if (num < 0) {
+            setErrorAC('enter correct value', true)
+        } else if (num === counter.maxValue) {
+            setErrorAC('enter correct value', true)
+        } else if (counter.maxValue < num) {
+            setErrorAC('enter correct value', true)
         } else {
-            dispatch(setErrorAC('',false))
+            setErrorAC('', false)
             dispatch(setMinValueAC(num))
         }
-
     }
 
     const setCounter = () => {
-        dispatch(setCounterAC(minValue))
+        setErrorAC('', false)
+        dispatch(setCounterAC(counter.minValue))
     }
-    const classNameStart = minValue < 0 || minValue === maxValue || maxValue < minValue ? 'error' : ''
-    const disableSet = minValue < 0 || maxValue === minValue || minValue > maxValue
+    const classNameStart = counter.minValue < 0 || counter.minValue === counter.maxValue || counter.maxValue < counter.minValue ? 'error' : ''
+    const disableSet = counter.minValue < 0 || counter.maxValue === counter.minValue || counter.minValue > counter.maxValue
 
     return (
         <div className={'counterSettings'}>
             <div>
-                <Input value={maxValue} onChange={onChangeMax} classname={classNameStart}>
+                <Input value={counter.maxValue} onChange={onChangeMax} classname={classNameStart}>
                     Max value:
                 </Input>
-                <Input value={minValue} onChange={onChangeMin} classname={classNameStart}>
+                <Input value={counter.minValue} onChange={onChangeMin} classname={classNameStart}>
                     Start value :
                 </Input>
             </div>
             <div>
-                <Button onClick={setCounter} disable={disableSet} >
+                <Button onClick={setCounter} disable={disableSet}>
                     set
                 </Button>
             </div>
         </div>
     )
-
 
 
 }

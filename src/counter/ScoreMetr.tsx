@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import './ScoreMetr.css'
 import {Button} from "../components/button/button";
 import {Table} from "./table/table";
-import {initialState} from "../redux/counterReducer/counterReducer";
+import {initialStateType} from "../redux/counterReducer/counterReducer";
 
 
 
