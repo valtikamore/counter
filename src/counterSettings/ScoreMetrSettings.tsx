@@ -24,32 +24,32 @@ export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
     const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
         let num = parseInt(e.currentTarget.value)
         if (num < 0) {
-            setErrorAC('enter correct value', true)
+            setErrorAC(`enter correct value`, true)
         } else if (counter.minValue === num) {
-            setErrorAC('enter correct value', true)
+            setErrorAC(`enter correct value`, true)
         } else if (num < counter.minValue) {
-            setErrorAC('enter correct value', true)
+            setErrorAC(`enter correct value`, true)
         } else {
             setErrorAC('', false)
-            dispatch(setMaxValueAC(num))
         }
+        dispatch(setMaxValueAC(num))
     }
     const onChangeMin = (e: ChangeEvent<HTMLInputElement>) => {
         let num = parseInt(e.currentTarget.value)
         if (num < 0) {
-            setErrorAC('enter correct value', true)
+            setErrorAC(`enter correct value`, true)
         } else if (num === counter.maxValue) {
-            setErrorAC('enter correct value', true)
+            setErrorAC(`enter correct value`, true)
         } else if (counter.maxValue < num) {
-            setErrorAC('enter correct value', true)
+            setErrorAC(`enter correct value`, true)
         } else {
             setErrorAC('', false)
-            dispatch(setMinValueAC(num))
         }
+        dispatch(setMinValueAC(num))
     }
 
     const setCounter = () => {
-        setErrorAC('', false)
+        dispatch(setErrorAC('', false))
         dispatch(setCounterAC(counter.minValue))
     }
     const classNameStart = counter.minValue < 0 || counter.minValue === counter.maxValue || counter.maxValue < counter.minValue ? 'error' : ''
@@ -66,7 +66,7 @@ export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
                 </Input>
             </div>
             <div>
-                <Button onClick={setCounter} disable={disableSet}>
+                <Button onClick={setCounter} disable={counter.disableButton ? disableSet : false}>
                     set
                 </Button>
             </div>

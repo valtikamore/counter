@@ -15,10 +15,7 @@ export const Table: FC<TablePropsType> = props => {
     //   startValue > maxValue
     // const counterMax = counter === maxValue ? 'maxCounter' : ''
 
-
-
     return (
-
         <div>
             {counter.error ? counter.errorText : counter.count}
         </div>
