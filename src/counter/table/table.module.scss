@@ -1,0 +1,21 @@
+.table {
+  border: 2px solid #ef6eae;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 33px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing:2px;
+}
+.errorTable {
+  color: black;
+  background: rgba(248, 3, 3, 0.4);
+}
+.maxCounter {
+  color: red;
+}

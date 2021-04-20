@@ -1,5 +1,5 @@
 import React, {ChangeEvent, FC} from "react";
-import './ScoreMetrSettings.css'
+import './ScoreMetrSettings.module.scss'
 import {Button} from "../components/button/button";
 import {Input} from "../components/input/input";
 import {useDispatch, useSelector} from "react-redux";

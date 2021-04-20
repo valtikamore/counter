@@ -1,7 +1,6 @@
 import React, {FC} from "react";
-import classNames from 'classnames'
 import {initialStateType} from "../../redux/counterReducer/counterReducer";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
 
 type TablePropsType = {

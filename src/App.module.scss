@@ -1,5 +1,5 @@
 .counter-wrapper {
-    display: flex;
+
 }
 @media screen and (max-width: 768px) {
     .counter-wrapper {
@@ -7,5 +7,4 @@
         flex-direction: column;
         padding: 5px;
     }
-
 }

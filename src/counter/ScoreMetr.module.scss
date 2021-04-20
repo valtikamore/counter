@@ -1,0 +1,20 @@
+.counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid  #ef6eae;
+    border-radius: 7px;
+    padding: 25px;
+    width: 200px;
+    margin-right: 10px;
+}
+.button-block {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+    .counter {
+        margin: 0 0 10px 5px;
+    }
+}

@@ -1,6 +1,6 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useCallback, useEffect} from 'react';
 import {ScoreMetr} from './counter/ScoreMetr';
-import './App.css'
+import classes from './App.module.scss';
 import {ScoreMetrSettings} from "./counterSettings/ScoreMetrSettings";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store";
@@ -20,24 +20,24 @@ const App: FC = () => {
             // }
         },[])
 
-    const  incCounter = () => {
+    const incCounter = () => {
         if(counter.count < counter.maxValue) {
             dispatch(incrementCounterAC())
         }
     }
-    function resetCounter() {
+
+    const resetCounter = () => {
         dispatch(resetCounterAC())
     }
 
     return (
-        <div className='counter-wrapper'>
+        <div className={classes.counterWrapper}>
             <ScoreMetr
                 incCounter={incCounter}
                 resetCounter={resetCounter}
                 counter={counter.count}
                />
-            <ScoreMetrSettings
-                               />
+            <ScoreMetrSettings/>
         </div>
     );
 }
