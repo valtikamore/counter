@@ -24,26 +24,26 @@ export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
     const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
         let num = parseInt(e.currentTarget.value)
         if (num < 0) {
-            setErrorAC(`enter correct value`, true)
+            dispatch(setErrorAC(`enter correct value`, true))
         } else if (counter.minValue === num) {
-            setErrorAC(`enter correct value`, true)
+            dispatch(setErrorAC(`enter correct value`, true))
         } else if (num < counter.minValue) {
-            setErrorAC(`enter correct value`, true)
+            dispatch(setErrorAC(`enter correct value`, true))
         } else {
-            setErrorAC('', false)
+            dispatch(setErrorAC(`enter values and press 'set'`,true))
         }
         dispatch(setMaxValueAC(num))
     }
     const onChangeMin = (e: ChangeEvent<HTMLInputElement>) => {
         let num = parseInt(e.currentTarget.value)
         if (num < 0) {
-            setErrorAC(`enter correct value`, true)
+            dispatch(setErrorAC(`enter correct value`, true))
         } else if (num === counter.maxValue) {
-            setErrorAC(`enter correct value`, true)
+            dispatch(setErrorAC(`enter correct value`, true))
         } else if (counter.maxValue < num) {
-            setErrorAC(`enter correct value`, true)
+            dispatch(setErrorAC(`enter correct value`, true))
         } else {
-            setErrorAC('', false)
+            dispatch(setErrorAC(`enter values and press 'set'`,true))
         }
         dispatch(setMinValueAC(num))
     }

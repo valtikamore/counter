@@ -11,9 +11,6 @@ type TablePropsType = {
 export const Table: FC<TablePropsType> = props => {
     const {} = props
     const counter = useSelector<AppRootStateType,initialStateType>(state => state.counter)
-    // const tableClassName = startValue < 0 || startValue === maxValue ||
-    //   startValue > maxValue
-    // const counterMax = counter === maxValue ? 'maxCounter' : ''
 
     return (
         <div>

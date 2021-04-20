@@ -22,7 +22,7 @@ export const ScoreMetr: FC<ScoreMetrType> = props => {
         <div className={'counter'}>
             <Table  />
             <div className='button-block'>
-                <Button onClick={incCounter}>
+                <Button onClick={incCounter} >
                     inc
                 </Button>
                 <Button onClick={resetCounter}>

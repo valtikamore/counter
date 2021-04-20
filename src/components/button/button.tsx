@@ -1,5 +1,4 @@
 import React, {ButtonHTMLAttributes, DetailedHTMLProps, FC} from "react";
-import classNames from 'classnames'
 
 
 type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
@@ -9,10 +8,10 @@ type ButtonsType = DefaultButtonPropsType & {
     disable?:boolean
 }
 
-export const Button: FC<ButtonsType> = props => {
+export const Button: FC<ButtonsType > = props => {
     const {onClick,disable} = props
     return (
-        <button onClick={()=> onClick()} disabled={disable} >
+        <button onClick={()=> onClick()} disabled={disable} className='pulse' >
             {props.children}
         </button>
     )

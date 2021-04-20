@@ -14,16 +14,6 @@ body {
     background-image: url(assets/Tesla-2020-Ethan-Hawke-movie.jpg);
     background-size: cover;
 }
-
-
-
-button {
-    background: none;
-}
-button:active {
-    outline: none;
-}
-
 input {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid #ef6eae;
@@ -32,6 +22,9 @@ input {
     padding: 4px;
     margin-bottom: 10px;
     text-align: center;
+}
+input:focus {
+    outline: none;
 }
 
 code {
