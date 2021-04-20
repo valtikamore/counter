@@ -1,27 +1,28 @@
-
+@import "src/scss/variables";
 .counterSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $color-pink;
+  border-radius: 7px;
+  width: 50%;
+  text-transform: uppercase;
+  text-align: center;
+  .values {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid  #ef6eae;
-    border-radius: 7px;
-    padding: 25px;
-    margin-right: 10px;
-    height: 100%;
-    width: 100%;
-    text-transform: uppercase;
-    text-align: center;
+  }
+
+  .error {
+    background: $color-input-error
+  }
 }
-.values {
-    display: flex;
-    flex-direction: column;
-}
-.error{
-   background: rgba(248, 3, 3, 0.5);
-}
+
+
+
 @media screen and (max-width: 768px) {
-    .counterSettings {
-        padding: 25px 5px 25px 5px ;
-    }
+  .counterSettings {
+    padding: 25px 5px 25px 5px;
+  }
 }

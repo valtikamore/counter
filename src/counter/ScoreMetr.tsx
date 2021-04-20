@@ -2,8 +2,7 @@ import React, {FC} from "react";
 import './ScoreMetr.module.scss'
 import {Button} from "../components/button/button";
 import {Table} from "./table/table";
-import {initialStateType} from "../redux/counterReducer/counterReducer";
-
+import classes from './ScoreMetr.module.scss'
 
 
 type ScoreMetrType = {
@@ -13,11 +12,11 @@ type ScoreMetrType = {
 }
 
 export const ScoreMetr: FC<ScoreMetrType> = props => {
-    const {incCounter,resetCounter,counter} = props
+    const {incCounter,resetCounter,...rest} = props
     return (
-        <div>
+        <div className={classes.counter}>
             <Table/>
-            <div>
+            <div  className={classes.buttonBlock}>
                 <Button onClick={incCounter}>
                     inc
                 </Button>

@@ -1,10 +1,10 @@
-import React, {FC, useCallback, useEffect} from 'react';
+import React, {FC, useEffect} from 'react';
 import {ScoreMetr} from './counter/ScoreMetr';
-import classes from './App.module.scss';
 import {ScoreMetrSettings} from "./counterSettings/ScoreMetrSettings";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store";
 import {incrementCounterAC, initialStateType, resetCounterAC} from "./redux/counterReducer/counterReducer";
+import classes from './App.module.scss'
 
 
 const App: FC = () => {
@@ -31,7 +31,7 @@ const App: FC = () => {
     }
 
     return (
-        <div className={classes.counterWrapper}>
+        <div className={classes.counter_wrapper}>
             <ScoreMetr
                 incCounter={incCounter}
                 resetCounter={resetCounter}

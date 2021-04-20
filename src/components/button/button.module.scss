@@ -1,22 +1,25 @@
 .pulse {
   border: 2px solid #ef6eae;
+  background-color: #ef8f6e;
   line-height: 1;
   margin: 0.5em;
   padding: 1em 2em;
   text-transform: uppercase;
   letter-spacing: 0.3em;
   color: white;
+
+  &:hover, focus {
+    animation: pulse 1s;
+    box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+    outline: none;
+  }
+  &.disable {
+    background: rgba(219, 36, 36, 0.3);
+  }
 }
 
-.pulse:hover,
-.pulse:focus {
-  animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
-  outline: none;
-}
-.disable {
-  background: rgba(255,255,255,0.3);
-}
+
+
 
 @keyframes pulse {
   0% {

@@ -1,10 +1,14 @@
-.counter-wrapper {
+@import './scss/variables.scss';
 
+.counter_wrapper {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  color: $color-white;
 }
+
 @media screen and (max-width: 768px) {
-    .counter-wrapper {
-        display: flex;
-        flex-direction: column;
-        padding: 5px;
-    }
+  .counter-wrapper {
+
+  }
 }

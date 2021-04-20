@@ -11,6 +11,7 @@ import {
     setMaxValueAC,
     setMinValueAC
 } from "../redux/counterReducer/counterReducer";
+import classes from './ScoreMetrSettings.module.scss'
 
 
 type ScoreMetrSettingsType = {}
@@ -30,7 +31,7 @@ export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
         } else if (num < counter.minValue) {
             dispatch(setErrorAC(`enter correct value`, true))
         } else {
-            dispatch(setErrorAC(`enter values and press 'set'`,true))
+            dispatch(setErrorAC(`enter values and press 'set'`, true))
         }
         dispatch(setMaxValueAC(num))
     }
@@ -43,20 +44,20 @@ export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
         } else if (counter.maxValue < num) {
             dispatch(setErrorAC(`enter correct value`, true))
         } else {
-            dispatch(setErrorAC(`enter values and press 'set'`,true))
+            dispatch(setErrorAC(`enter values and press 'set'`, true))
         }
         dispatch(setMinValueAC(num))
     }
-
     const setCounter = () => {
         dispatch(setErrorAC('', false))
         dispatch(setCounterAC(counter.minValue))
     }
-    const classNameStart = counter.minValue < 0 || counter.minValue === counter.maxValue || counter.maxValue < counter.minValue ? 'error' : ''
+
+    const classNameStart = counter.minValue < 0 || counter.minValue === counter.maxValue || counter.maxValue < counter.minValue ? classes.error : ''
     const disableSet = counter.minValue < 0 || counter.maxValue === counter.minValue || counter.minValue > counter.maxValue
 
     return (
-        <div className={'counterSettings'}>
+        <div className={classes.counterSettings}>
             <div>
                 <Input value={counter.maxValue} onChange={onChangeMax} classname={classNameStart}>
                     Max value:
