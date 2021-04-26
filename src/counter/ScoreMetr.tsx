@@ -6,21 +6,22 @@ import classes from './ScoreMetr.module.scss'
 
 
 type ScoreMetrType = {
-    resetCounter:()=>void
-    incCounter:()=>void
-    counter:number
+    resetCounter: () => void
+    incCounter: () => void
+    disableInc: boolean
+    disableReset: boolean
 }
 
 export const ScoreMetr: FC<ScoreMetrType> = props => {
-    const {incCounter,resetCounter,...rest} = props
+    const {incCounter, resetCounter, ...rest} = props
     return (
         <div className={classes.counter}>
             <Table/>
-            <div  className={classes.buttonBlock}>
-                <Button onClick={incCounter}>
+            <div className={classes.buttonBlock}>
+                <Button onClick={incCounter} disable={rest.disableInc}>
                     inc
                 </Button>
-                <Button onClick={resetCounter}>
+                <Button onClick={resetCounter} disable={rest.disableReset}>
                     reset
                 </Button>
             </div>
@@ -29,6 +30,6 @@ export const ScoreMetr: FC<ScoreMetrType> = props => {
 }
 
 
-// const disableInc =  maxValue === startValue  || maxValue < 0 || counter === maxValue || startValue <0 || startValue > maxValue
-// const disableReset = counter === 0 || maxValue === startValue  || maxValue < 0 || counter === startValue || counter < 0 || startValue > maxValue
+
+
 

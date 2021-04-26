@@ -67,7 +67,7 @@ export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
                 </Input>
             </div>
             <div>
-                <Button onClick={setCounter} disable={counter.disableButton ? disableSet : false}>
+                <Button onClick={setCounter} disable={disableSet}>
                     set
                 </Button>
             </div>

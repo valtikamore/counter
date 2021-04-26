@@ -25,6 +25,9 @@ const App: FC = () => {
             dispatch(incrementCounterAC())
         }
     }
+    const disableInc =  counter.maxValue === counter.minValue  || counter.maxValue < 0 || counter.count === counter.maxValue || counter.minValue <0 || counter.minValue > counter.maxValue
+
+    const disableReset =  counter.count === 0 ||  counter.maxValue ===  counter.minValue  ||  counter.maxValue < 0 ||  counter.count ===  counter.minValue ||  counter.count < 0 || counter.minValue >  counter.maxValue
 
     const resetCounter = () => {
         dispatch(resetCounterAC())
@@ -35,7 +38,8 @@ const App: FC = () => {
             <ScoreMetr
                 incCounter={incCounter}
                 resetCounter={resetCounter}
-                counter={counter.count}
+                disableInc={disableInc}
+                disableReset={disableReset}
                />
             <ScoreMetrSettings/>
         </div>

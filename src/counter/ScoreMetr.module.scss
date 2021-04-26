@@ -1,16 +1,18 @@
 @import "src/scss/variables";
+
 .counter {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border: 2px solid $color-pink;
   border-radius: 7px;
   margin-right: 10px;
   width: 50%;
+  height: 200px;
 
   .buttonBlock {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 }
 
