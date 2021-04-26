@@ -1,10 +1,14 @@
+import {Dispatch} from "redux";
+import {AppRootStateType} from "../store";
+
 enum ACTION_TYPES {
     INCREMENT_COUNTER = 'INCREMENT_COUNTER',
     RESET_COUNTER = 'RESET_COUNTER',
     SET_COUNT = 'SET_COUNT',
     SET_MAX_VALUE='SET_MAX_VALUE',
     SET_MIN_VALUE = 'SET_MIN_VALUE',
-    SET_ERROR='SET_ERROR'
+    SET_ERROR='SET_ERROR',
+    SET_VALUE_FROM_LOCAL_STORAGE='SET_VALUE_FROM_LOCAL_STORAGE'
 }
 
 export type ActionsType =
@@ -13,7 +17,8 @@ export type ActionsType =
     ReturnType<typeof setCounterAC> |
     ReturnType<typeof setMaxValueAC> |
     ReturnType<typeof setMinValueAC> |
-    ReturnType<typeof setErrorAC>
+    ReturnType<typeof setErrorAC> |
+    ReturnType<typeof setValueFromLocalStorage>
 
 export interface initialStateType {
     count: number
@@ -53,6 +58,9 @@ export const counterReducer = (state = initialState, action: ActionsType) => {
         case ACTION_TYPES.SET_ERROR: {
             return {...state,errorText:action.errorText,error:action.error}
         }
+        case ACTION_TYPES.SET_VALUE_FROM_LOCAL_STORAGE: {
+            return {...state,count: action.value,minValue:action.value}
+        }
         default :
             return state
     }
@@ -64,4 +72,23 @@ export const setCounterAC = ( minValue: number) => ({type: 'SET_COUNT', minValue
 export const setMaxValueAC = (value:number) => ({type:'SET_MAX_VALUE',value}as const)
 export const setMinValueAC = (value:number) => ({type:'SET_MIN_VALUE',value}as const)
 export const setErrorAC = (errorText:string,error:boolean) => ({type:'SET_ERROR',errorText,error}as const )
+export const setValueFromLocalStorage = (value:number) => ({type:'SET_VALUE_FROM_LOCAL_STORAGE',value}as const )
+
+export const IncValueTC = () => {
+    return (dispatch:Dispatch , getState:() => AppRootStateType) => {
+        //@ts-ignore
+        let currentValue = getState().counter.count
+        localStorage.setItem('counterValue',JSON.stringify(currentValue + 1 ))
+        dispatch(incrementCounterAC())
+    }
+}
+export const setValueFromLocalStorageTC = () => {
+    return (dispatch:Dispatch ) => {
+        let valueAsString = localStorage.getItem('counterValue')
+        if(valueAsString) {
+            let newValue = JSON.parse(valueAsString)
+            dispatch(setValueFromLocalStorage(newValue))
+        }
+    }
+}
 
