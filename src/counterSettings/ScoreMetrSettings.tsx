@@ -53,7 +53,7 @@ export const ScoreMetrSettings: FC<ScoreMetrSettingsType> = props => {
         dispatch(setCounterAC(counter.minValue))
     }
 
-    const classNameStart = counter.minValue < 0 || counter.minValue === counter.maxValue || counter.maxValue < counter.minValue ? classes.error : ''
+    const classNameStart = counter.minValue < 0 || counter.minValue === counter.maxValue || counter.maxValue < counter.minValue ? classes.errorInput : classes.inputField
     const disableSet = counter.minValue < 0 || counter.maxValue === counter.minValue || counter.minValue > counter.maxValue
 
     return (

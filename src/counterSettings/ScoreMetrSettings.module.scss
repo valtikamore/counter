@@ -1,24 +1,37 @@
 @import "src/scss/variables";
+
 .counterSettings {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   border: 2px solid $color-pink;
+  box-shadow: $box-shadow;
   border-radius: 7px;
   width: 50%;
   text-transform: uppercase;
   text-align: center;
+
   .values {
     display: flex;
     flex-direction: column;
   }
-
-  .error {
-    background: $color-input-error
-  }
 }
+.errorInput {
+  background: $color-input-error;
+  border-radius: 2px;
+  text-align: center;
+  color: $color-white;
+  font-size: 16px;
+}
+.inputField {
+  border-radius: 2px;
+  background: $input-color;
+  text-align: center;
+  color: $color-white;
+  font-size: 16px;
 
+}
 
 
 @media screen and (max-width: 768px) {
