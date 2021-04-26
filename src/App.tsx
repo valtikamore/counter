@@ -4,10 +4,9 @@ import {ScoreMetrSettings} from "./counterSettings/ScoreMetrSettings";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store";
 import {
-    IncValueTC,
+    incrementCounterAC,
     initialStateType,
     resetCounterAC,
-    setValueFromLocalStorageTC
 } from "./redux/counterReducer/counterReducer";
 import classes from './App.module.scss'
 
@@ -16,13 +15,9 @@ const App: FC = () => {
     const dispatch = useDispatch()
     const counter = useSelector<AppRootStateType,initialStateType>(state => state.counter)
 
-        useEffect(()=> {
-            dispatch(setValueFromLocalStorageTC())
-        },[])
-
     const incCounter = () => {
         if(counter.count < counter.maxValue) {
-            dispatch(IncValueTC())
+            dispatch(incrementCounterAC())
         }
     }
     const disableInc =  counter.maxValue === counter.minValue  || counter.maxValue < 0 || counter.count === counter.maxValue || counter.minValue <0 || counter.minValue > counter.maxValue
