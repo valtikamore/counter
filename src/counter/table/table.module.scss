@@ -9,18 +9,18 @@
   line-height: 50px;
   letter-spacing: 2px;
   text-align: center;
-  height: 100px;
+  height: 90px;
   padding: 15px;
+  border-radius: 7px;
+  border: 2px inset $counterMainBox-color;
+  &.maxCounter {
+    color: $max-counter-color;
+  }
 }
 
-.errorTable {
-  color: black;
-}
 
-.maxCounter {
-  color: $button-color;
-  height: 50px;
-  width: 50px;
-  box-shadow: $box-shadow-table;
-  border-radius: 5px;
-}
+
+
+
+
+

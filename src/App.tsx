@@ -9,33 +9,17 @@ import {
     resetCounterAC,
 } from "./redux/counterReducer/counterReducer";
 import classes from './App.module.scss'
+import {ScoreMetrContainer} from "./counter/ScoremetrContainer";
 
 
 const App: FC = () => {
-    const dispatch = useDispatch()
-    const counter = useSelector<AppRootStateType,initialStateType>(state => state.counter)
 
-    const incCounter = () => {
-        if(counter.count < counter.maxValue) {
-            dispatch(incrementCounterAC())
-        }
-    }
-    const disableInc =  counter.maxValue === counter.minValue  || counter.maxValue < 0 || counter.count === counter.maxValue || counter.minValue <0 || counter.minValue > counter.maxValue
 
-    const disableReset =counter.maxValue ===  counter.minValue  ||  counter.maxValue < 0 ||  counter.count ===  counter.minValue ||  counter.count < 0 || counter.minValue >  counter.maxValue
 
-    const resetCounter = () => {
-        dispatch(resetCounterAC())
-    }
 
     return (
         <div className={classes.counter_wrapper}>
-            <ScoreMetr
-                incCounter={incCounter}
-                resetCounter={resetCounter}
-                disableInc={disableInc}
-                disableReset={disableReset}
-               />
+            <ScoreMetrContainer/>
             <ScoreMetrSettings/>
         </div>
     );

@@ -3,6 +3,7 @@ import './ScoreMetr.module.scss'
 import {Button} from "../components/button/button";
 import {Table} from "./table/table";
 import classes from './ScoreMetr.module.scss'
+import {initialStateType} from "../redux/counterReducer/counterReducer";
 
 
 type ScoreMetrType = {
@@ -10,13 +11,14 @@ type ScoreMetrType = {
     incCounter: () => void
     disableInc: boolean
     disableReset: boolean
+    counter:initialStateType
 }
 
 export const ScoreMetr: FC<ScoreMetrType> = props => {
     const {incCounter, resetCounter, ...rest} = props
     return (
         <div className={classes.counter}>
-            <Table/>
+            <Table counter={rest.counter}/>
             <div className={classes.buttonBlock}>
                 <Button onClick={incCounter} disable={rest.disableInc}>
                     inc
